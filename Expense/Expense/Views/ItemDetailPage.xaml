@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Expense.Views.ItemDetailPage"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="DeleteItem_Clicked" IconImageSource="binIcon.png">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Frame CornerRadius="5" Padding="10" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+                <FlexLayout Direction="Column">
+                    <Frame Padding="5,5,5,10">
+                        <StackLayout>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                <Label Text="{Binding itemDetail.name}" FontSize="16"/>
+                                <Label Text="{Binding itemDetail.money}" FontSize="16" />
+                            </FlexLayout>
+                            <BoxView HeightRequest="1" Color="#555a62" Opacity=".5"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5,5,5,10">
+                        <StackLayout>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                <Label Text="Phân loại" FontSize="14"/>
+                                <Label Text="{Binding itemDetail.typeSub}" FontSize="14" />
+                            </FlexLayout>
+                            <BoxView HeightRequest="1" Color="#555a62"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5,5,5,10">
+                        <StackLayout>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                <Label Text="Ngày tháng" FontSize="14"/>
+                                <Label Text="{Binding itemDetail.dateCreate, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="14" />
+                            </FlexLayout>
+                            <BoxView HeightRequest="1" Color="#555a62"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5,5,5,10">
+                        <StackLayout>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                <Label Text="Ghi chú" FontSize="14"/>
+                                <Label Text="{Binding itemDetail.description}" FontSize="14" />
+                            </FlexLayout>
+                        </StackLayout>
+                    </Frame>
+                </FlexLayout>
+            </Frame>
+            <Button CornerRadius="5" VerticalOptions="Center" HorizontalOptions="Center" Text="Chỉnh sửa" TextColor="#fff" BackgroundColor="#2196f3" Margin="0,10,0,0" Clicked="EditItem_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

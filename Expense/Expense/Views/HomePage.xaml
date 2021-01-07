@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Expense.Views.HomePage"
+             x:Name="BrowseItemsPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <StackLayout Padding="0">
+        <Frame BackgroundColor="#2196f3" HeightRequest="80" HorizontalOptions="FillAndExpand" CornerRadius="0">
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Quản lý báo cáo chi tiêu" HorizontalOptions="Fill" FontSize="18" TextColor="#fff"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="{Binding User.accountBalance}" HorizontalOptions="Fill" FontSize="16" TextColor="#fff"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#fff" Text="{Binding User.totalSpend}" />
+                        <Label Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#fff" Text="{Binding User.totalMakeMoney}" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        <StackLayout>
+            <ListView x:Name="ItemsListDate"
+                  ItemsSource="{Binding RegistersList.data.items}" 
+                  Margin="15" 
+                  HasUnevenRows="true"
+                  VerticalOptions="FillAndExpand"
+                  SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="0,0,0,30">
+                                <ListView x:Name="ItemsListData" ItemsSource="{Binding data}" HeightRequest="{Binding HeightList}" SeparatorVisibility="None" ItemSelected="OnItemSelected">
+                                    <ListView.Header>
+                                        <StackLayout BackgroundColor="#eff0f1" Padding="5,5,0,5">
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30"/>
+                                                </Grid.RowDefinitions>
+                                                <Label FontSize="10" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding dateCreate, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                                                <Label Grid.Column="1" VerticalOptions="Center" FontSize="10" HorizontalOptions="Center" Text="{Binding IncomeSum, StringFormat='Thu nhập: {0}'}" />
+                                                <Label Grid.Column="2" VerticalOptions="Center" FontSize="10" HorizontalOptions="Center" Text="{Binding CostSum, StringFormat='Chi tiêu: {0}'}" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </ListView.Header>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <Grid Margin="10,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="40"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label VerticalOptions="Center" HorizontalOptions="Start" FontSize="16" Text="{Binding name}" />
+                                                        <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" FontSize="16" Text="{Binding money}"/>
+                                                        <BoxView Grid.ColumnSpan="2" Color="#555a62" HeightRequest="1"  VerticalOptions="End" Opacity=".5" />
+                                                    </Grid>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+        <AbsoluteLayout>
+            <ImageButton BackgroundColor="Transparent"
+                         Source="addIcon.png"
+                    WidthRequest="50" HeightRequest="50"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"  
+                    AbsoluteLayout.LayoutBounds="1,1,75,75"
+                    Clicked="AddItem_Clicked"
+                    CornerRadius="25"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" 
+                    />
+        </AbsoluteLayout>
+    </StackLayout>
+</ContentPage>

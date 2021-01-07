@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Expense.Views.SignIn"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Background="white" >
+            <Image Source="logo.png" HeightRequest="250"></Image>
+            <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand"  >
+                <Label Text="Username"></Label>
+                <Entry x:Name="username" Placeholder="Username"></Entry>
+                <Label Text="Password"></Label>
+                <Entry x:Name="password" Placeholder="Password" IsPassword="True"></Entry>
+                <Button Text="Sign In" BackgroundColor="Aqua"  Clicked="SignIn_Clicked"></Button>
+                <Button Text="Sign Up" BackgroundColor="Violet" Clicked="SignUp_Clicked"></Button>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

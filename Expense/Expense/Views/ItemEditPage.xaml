@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:local="clr-namespace:Expense.Views"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Expense.Views.ItemEditPage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="0">
+            <Frame BackgroundColor="#2196f3" Margin="0, -10, 0, 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*" />
+                        <ColumnDefinition Width="0.8*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="ImageContent" Source="{Binding ImageContent}" WidthRequest="30" HeightRequest="30" />
+                    <local:CustomEntry x:Name="Money" Text="{Binding Money}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Grid.Column="1" Placeholder="0" TextColor="White" Keyboard="Numeric" FontSize="20" BackgroundColor="#2196f3"/>
+                </Grid>
+            </Frame>
+
+            <StackLayout Margin="20,10">
+                <Frame Padding="10"  Margin="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Ngày tháng" VerticalTextAlignment="Center"/>
+                            <DatePicker x:Name="datePicker"
+                                        Grid.Column="1"
+                                        DateSelected="OnDateSelected"
+                                        FontSize="14"
+                                        Date="{Binding datePicker, Mode=TwoWay}"
+                                        />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#555a62" Opacity=".5"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Phân loại" VerticalTextAlignment="Center"/>
+                            <local:CustomPicker x:Name="DtbPicker" Grid.Column="1" ItemsSource="{Binding ListCategoryPicker}" SelectedItem="{Binding SelectedObject}" SelectedIndexChanged="DtbPicker_SelectedIndexChanged" FontSize="14"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#555a62" Opacity=".5"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Nội dung" VerticalTextAlignment="Center"/>
+                            <local:CustomPicker x:Name="ContentPicker"
+                                                Grid.Column="1" ItemsSource="{Binding ListItemSelect}" SelectedItem="{Binding SelectedObject}" SelectedIndexChanged="ContentPicker_SelectedIndexChanged" FontSize="14"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#555a62" Opacity=".5"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Ghi chú" VerticalTextAlignment="Center"/>
+                            <local:CustomEntry x:Name="Description" Grid.Column="1" Placeholder="Mô tả" FontSize="14" HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <AbsoluteLayout>
+                <ImageButton BackgroundColor="Transparent" 
+                             Source="checkIcon.png" 
+                             WidthRequest="50" 
+                             HeightRequest="50"
+                             Clicked="Action_Clicked" 
+                             AbsoluteLayout.LayoutFlags="PositionProportional"  
+                             AbsoluteLayout.LayoutBounds="1,1,75,75"
+                             CornerRadius="25"
+                             HorizontalOptions="Center" 
+                             VerticalOptions="Center" />
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
